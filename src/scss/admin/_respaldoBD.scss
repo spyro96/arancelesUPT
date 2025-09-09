@@ -1,0 +1,48 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenedor-respaldo{
+    @include m.contenedor;
+    @include m.box-shadow;
+    padding: 2rem;
+
+    h2{
+        text-align: center;
+    }
+
+    .boton-crear{
+        button{
+            @include m.boton(v.$azul, v.$blanco);
+            width: auto;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+    }
+
+    .punto-restauracion{
+        margin-top: 2rem;
+        .campo{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            label{
+                font-size: 2rem;
+                font-weight: bold;
+            }
+
+            select{
+                @include m.input-estilos;
+            }
+        }
+        .boton-restaurar{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            @include m.tablet{
+                
+                justify-content: flex-end;
+            }
+        }
+    }
+}

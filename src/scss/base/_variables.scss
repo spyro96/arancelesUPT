@@ -1,0 +1,58 @@
+// Fuentes
+$fuente-principal: 'Outfit', sans-serif;
+
+// Tamaño de Media Queries
+$telefono: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$xl_desktop: 1200px;
+
+// Colores
+$azul: #007df4;
+$secundario: #00c8c2;
+$disabled: #b5edff;
+$azulOscuro: #0d569b;
+
+
+$negro: #1a1b15;
+$blanco: #FFFFFF;
+$gris: #64748B;
+$gris-claro: #f8fafcaf;
+$gris-oscuro: #1E293B;
+$gris-A: #edf2f4 ;
+$gris-B: #EFF3F8;
+
+$rojo: rgb(169, 0, 0);
+$rojoFuerte:rgba(255, 0, 0, 0.7);
+$verde: #02db02;
+$verdeAlerta: rgb(2 219 2 / 32%);
+
+// Fuentes
+$delgada: 300;
+$regular: 400;
+$bold: 700;
+$black: 900;
+
+         
+         
+.btn-grad {
+    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+ 

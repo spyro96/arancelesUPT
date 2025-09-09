@@ -1,0 +1,135 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.datos-personales {
+    @include m.contenedor-md;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: v.$blanco;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contenido__titulo {
+    text-align: center;
+
+    @include m.tablet {
+        font-size: 3rem;
+    }
+}
+
+.perfilForm {
+    &__grid {
+
+        &-info {
+            @include m.grid(1fr, 2rem);
+
+            @include m.tablet {
+                @include m.grid(3, 3rem);
+            }
+        }
+
+        &-preguntas {
+            @include m.grid(1fr, 2rem);
+
+            @include m.tablet {
+                @include m.grid(2, 3rem);
+            }
+        }
+    }
+
+    
+
+    & .campo {
+        position: relative;
+        select{
+            @extend input;
+            height: 4.3rem;
+        }
+
+        & label
+        {
+            position: absolute;
+            font-size: 100%;
+            top: -1rem;
+            left: -.7rem;
+            padding: .8rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            -moz-transition: 0.3s ease all;
+            -webkit-transition: 0.3s ease all;
+            color: v.$negro;
+
+            & span{
+                font-size: 1.5rem;
+                color: red;
+                font-weight: 700;
+            }
+        }
+
+        & input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px v.$gris-oscuro solid;
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem 0;
+            font-size: 18px;
+            color: #000000;
+            transition: border-bottom 500ms;
+
+            &:focus,
+            &:valid {
+                 outline: none;
+              }
+
+            &:focus{
+                border-bottom: 2px solid v.$azul;
+            }
+
+            &:disabled ~ .label{
+                 top: -1.4rem;
+             }
+
+            &:disabled{
+                background-color: lighten(v.$gris-oscuro, 70%);
+                border-radius: .7rem;
+            }
+        }
+
+        & .input-border {
+            position: absolute;
+            background: v.$azul;
+            width: 0%;
+            height: .2rem;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s;
+
+            &:hover {
+                background: v.$azul;
+            }
+        }
+    }
+
+    & .submit{
+        justify-content: center;
+        @include m.tablet{
+            justify-content: flex-end
+        }
+        & input[type="submit"]{
+            @include m.botonGradient(v.$azul, v.$blanco);
+            width: 100%;
+            margin-top: 1rem;
+            @include m.tablet{
+                width: auto;
+            }
+        }
+    }
+}
+
+.campos-faltantes{
+    border-bottom-color: red !important ;
+}
+

@@ -1,0 +1,110 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.auth{
+    p{
+        text-align: center;
+    }
+}
+.formulario-olvide{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    @include m.tablet{
+        flex-direction: row;
+    }
+    
+    .campo{
+        display: flex;
+        flex-direction: column;
+
+        margin: 0 auto;
+        width: 30rem;
+        
+        input:not([type="submit"]){
+            @include m.input-estilos;
+        }
+
+        input[type="submit"]{
+            @include m.botonGradient(v.$azul, v.$blanco);
+            width: auto;
+        }
+    }
+}
+
+.contenedor-preguntas{
+    .contenido{
+        margin-top: 2rem;
+        .formulario-preguntas{
+            @include m.grid(1, 2rem);
+            @include m.tablet{
+                @include m.grid(2, 2rem);
+            }
+    
+            .campo{
+                
+                display: flex;
+                flex-direction: column;
+    
+                input{
+                    @include m.input-estilos;
+                }
+            }
+
+            .campo-password{
+                position: relative;
+                .fa-eye{
+                    position: absolute;
+                    top: 17%;
+                    right: 2%;
+                    cursor: pointer;
+                }
+            }
+
+            .campo-repetido{
+                position: relative;
+                .fa-eye{
+                    position: absolute;
+                    right: 2%;
+                    top: 53%;
+                    @include m.tablet{
+                        top: 17%;
+                        right: 2%;
+                        
+                    }
+                    
+                    cursor: pointer;
+                }
+            }
+
+            .lista-requerimiento{
+                color: lighten(#000, 40%);
+                padding: 0;
+                list-style: none;
+                line-height: 1.5;
+
+                .valido{
+                    color: darken(v.$verde, 10%);
+                }
+            }
+            
+        }
+        .contenedorBoton{
+            display: flex;
+            justify-content: center;
+            @include m.tablet{
+                justify-content: flex-end;
+            }
+
+            button{
+                margin-top: 2rem;
+                @include m.botonGradient(v.$azul, v.$blanco);
+                
+                @include m.tablet{
+                    width: auto;
+                }
+            }
+        }
+    }
+}

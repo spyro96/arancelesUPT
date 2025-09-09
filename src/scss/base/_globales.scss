@@ -1,0 +1,187 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+body {
+    font-family: v.$fuente_principal;
+    font-size: 1.7rem;
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+
+  
+
+
+.body{
+    background-image: url('../img/fondoLogin.png');
+    background-attachment: fixed;
+    overflow: auto;
+    height: 100vh;
+
+    @include m.tablet{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: rgb(14,42,71);
+    }
+    // animation: desplazar 20s infinite alternate linear;
+}
+
+//si utilizas sweealert2 
+.swal2-popup {
+    font-size: 1.6rem !important;
+    font-family: 'Outfit', serif;
+}
+
+.swal2-confirm{
+    background-color: v.$azul !important;
+    font-size: 2rem !important;
+    padding: 1rem 2rem;
+}
+
+.swal2-cancel{
+  font-size: 2rem !important;
+  padding: 1rem 2rem;
+}
+//fin sweealert2
+//loader
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  grid-column: 1/-1;
+  color: v.$azul;
+  font-size: .5rem;
+  margin: 0 auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+  
+.titulo-modal{
+  font-size: 2rem !important;
+}
+.form-select, .modal-footer button{
+  font-size: 2rem !important;
+}
+.paginate_button.current{
+  padding: .3rem 1rem !important;
+}
+
+.modal-title{
+  font-size: 2rem !important;
+}
+
+//datatable estilos
+
+.form-select-sm, .form-control-sm, .page-link{ // 
+  font-size: 1.5rem;
+}
+
+//tooltip
+
+.tooltip-base {
+  position: relative;
+  display: inline-block;
+
+  &:hover .tooltiptexto{
+      visibility: visible;
+      opacity: 1;
+  }
+      .tooltiptexto {
+          all: unset;
+          visibility: hidden;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+          width: auto;
+          background-color: darken(v.$azul, 10%);
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          border-radius: 6px;
+          padding: 9px;
+          position: absolute;
+          z-index: 1;
+          top: -200%;
+          /* Posiciona el tooltip bajo del elemento */
+          left: 50%;
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: opacity 0.3s;
+
+          &::after {
+                  content: " ";
+                  position: absolute;
+                  top: 100%;
+                  /* At the bottom of the tooltip */
+                  left: 50%;
+                  margin-left: -5px;
+                  border-width: 5px;
+                  border-style: solid;
+                  border-color: darken(v.$azul, 10%) transparent transparent transparent;
+              }
+      }
+}

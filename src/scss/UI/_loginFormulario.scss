@@ -1,0 +1,68 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.loginFormulario{
+    @include m.contenedor;
+
+    &__campo{
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+        position: relative;
+        &--pass{
+            position: relative;
+        }
+    }
+
+    &__icono{
+        margin-top: 1.5rem;
+        position: absolute;
+        top: 0;
+        right: 0px;
+
+        &:hover{
+            cursor: pointer;
+        }    
+    }
+        
+    &__input{
+
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px v.$gris-oscuro solid;
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        font-size: 18px;
+        color: #000000;
+
+        &:focus,
+        &:active{
+            outline: none;
+        }
+
+        &:focus ~ .loginFormulario__input-border{
+            width: 100%;
+        }
+    }
+
+    &__input-border{
+        position: absolute;
+        background: v.$azul;
+        width: 0%;
+        height: .2rem;
+        bottom: 0;
+        left: 0;
+        transition: 0.3s;
+
+        &:hover{
+            background: v.$azul;
+        }
+    }
+
+    &__submit{
+        @include m.boton(v.$azul, v.$blanco);
+        margin: 1.5rem 0;
+        text-transform: uppercase;
+    }
+}

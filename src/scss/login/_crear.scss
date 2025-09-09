@@ -1,0 +1,175 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.auth {
+    @include m.contenedor-md;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    padding: 2rem 2rem 3rem;
+    background-color: v.$blanco;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    z-index: 3;
+    &__titulo {
+        text-align: center;
+    }
+}
+
+.formulario {
+    &__grid {
+
+        //tamaño telefono
+        @include m.grid(1, 2rem);
+
+        //tamaño escritorio
+        @include m.tablet {
+
+            @include m.grid(2, 3rem);
+
+            >h4 {
+                margin: 0;
+                 grid-row: 3 / 3;
+                 grid-column: 1 / 3;
+            }
+        }
+
+    }
+
+    .campo-password{
+        position: relative;
+
+        .fa-eye{
+            position: absolute;
+            right: 3%;
+            top: 27%;
+            cursor: pointer;
+        }
+    }
+
+    &__campo {
+        display: flex;
+        flex-direction: column;
+
+        .mensaje-password{
+            margin-top: .5rem;
+            font-size: 1.5rem;
+            // color: darken(v.$rojo, 10%);
+            color: lighten(#000, 40%);
+            text-align: justify;
+
+            ul{
+                padding: 0;
+                
+                li{
+                    list-style: none;
+                    font-family: v.$fuente-principal;
+                    line-height: 1.5;
+
+                    &.valido{
+                        color: darken(v.$verde, 10%);
+                    }
+                }
+            }
+
+            &.valido{
+                color: darken(v.$verde, 10%);
+            }
+            
+        }
+
+        &--estudiante{
+            @include m.tablet{
+                grid-column: 1 / 3;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 100%;
+        top: .7rem;
+        left: -.7rem;
+        padding: .8rem;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        -moz-transition: 0.3s ease all;
+        -webkit-transition: 0.3s ease all;
+        color: v.$negro
+    }
+
+    &__input {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px v.$gris-oscuro solid;
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        font-size: 18px;
+        color: #000000;
+        transition-property: border-color;
+        transition-duration: .5s;
+
+        &.select{
+            font-size: 1.5rem;
+            font-weight: bold;
+            
+        }
+
+        &:focus{
+            border-color: v.$azul;
+        }
+
+        &:focus,
+        &:valid {
+            outline: none;
+        }
+
+        &:focus~.formulario__input-border {
+            width: 100%;
+        }
+
+        &:focus~.formulario__label,
+        &:valid~.formulario__label {
+            top: -1.5rem;
+            color: v.$azul;
+        }
+    }
+
+    &__input-border {
+        position: absolute;
+        background: v.$azul;
+        width: 0%;
+        height: .2rem;
+        bottom: 0;
+        left: 0;
+        transition: 0.3s;
+
+        &:hover {
+            background: v.$azul;
+        }
+    }
+
+}
+
+.invalido{
+    color: v.$rojoFuerte!important;
+}
+
+.btn-disabled{
+    @include m.boton(v.$disabled, v.$azul);
+}
+.submit{
+    display: flex;
+    @include m.tablet{
+        justify-content: flex-end;
+    }
+    
+    &__boton{
+    margin-top: 2rem;
+    @include m.botonGradient(v.$azul, v.$blanco);
+    width: 100%;
+    text-transform: uppercase;
+        @include m.tablet{
+            width: auto;
+            font-size: 1.5rem;
+        }
+    }
+}

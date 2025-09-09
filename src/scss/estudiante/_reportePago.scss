@@ -1,0 +1,159 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.contenido-pago {
+    @include m.contenedor;
+    @include m.shadow-box;
+
+    margin-bottom: 4rem;
+    .contenedor-boton{
+        @include m.contenedor;
+        a{
+            @include m.boton(v.$azul, v.$blanco);
+            width: auto;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-size: 1.5rem;
+            :visited{
+                color: none;
+            }
+        }
+    }
+    h3 {
+        text-align: center;
+    }
+
+    .contenedor {
+
+        .datos-arancel {
+            .datos-bancario {
+                text-align: center;
+
+                @include m.tablet {
+                    text-align: justify;
+                }
+            }
+
+            @include m.tablet {
+                display: flex;
+                gap: 1.5rem;
+                justify-content: space-around;
+            }
+
+            p {
+                span {
+                    font-weight: 600;
+                }
+            }
+        }
+
+    }
+
+    .formulario {
+
+        .contenido-imagen{
+            margin-top: 2rem;
+        }
+        .campo {
+            all: unset;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            Select {
+                @extend input;
+                font-size: 1.5rem !important;
+                font-weight: bold;
+            }
+        }
+
+        .referencia-bancaria{
+            margin-top: 2rem;
+        }
+
+        .banco-vacio{
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: v.$rojo;
+        }
+        input:not(input[type="file"], input[type="submit"]) {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px v.$gris-oscuro solid;
+            display: block;
+            width: auto;
+            margin-top: 1rem;
+            padding: 1rem 0;
+            font-size: 18px;
+            color: #000000;
+            transition: border-bottom 500ms;
+
+            &:focus,
+            &:valid {
+                outline: none;
+            }
+
+            &:focus {
+                border-bottom: 2px solid v.$azul;
+            }
+
+            &:disabled {
+                background-color: lighten(v.$gris-oscuro, 70%);
+                border-radius: .7rem;
+            }
+
+        }
+        .referencia-bancaria{
+
+            input[type="number"]{
+                margin-bottom: 0;
+            }
+
+            p{
+                margin-top: 0;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: v.$rojo;
+            }
+        }
+
+        .campo-imagen{
+            @include m.tablet{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            img{
+                width: 5rem;
+                height: 5rem;
+                border: 2px dotted v.$negro;
+            }
+            
+            input[type="file"]{
+                margin-top: 1rem;
+                border: 2px solid lighten(v.$azul, 45%);
+                border-radius: 1.3rem;
+            }
+            input[type="file"]::file-selector-button{
+                @include m.boton(v.$azul, v.$blanco);
+                width: auto;
+                padding: .5rem;
+                font-size: 1.5rem;
+                border-radius: 1rem;
+            }
+        }
+
+        .enviar-pago{
+            margin-top: 2rem;
+            @include m.botonGradient(v.$azul, v.$blanco);
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+
+    }
+
+}

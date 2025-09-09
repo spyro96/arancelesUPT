@@ -1,0 +1,1 @@
+!function(){const e=document.querySelector("#password"),o=document.querySelector(".loginFormulario"),t=document.querySelector("#icono");o&&t.addEventListener("click",()=>{t.classList.toggle("fa-fade"),"password"===e.type?e.type="text":e.type="password"})}();

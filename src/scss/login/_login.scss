@@ -1,0 +1,60 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.login{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%; 
+    width: min(95%, 55rem);
+    padding: 3rem 2rem 3rem;
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color:#FFFFFF;
+    z-index: 3;
+    .boton-ayuda{
+        display: flex;
+        justify-content: flex-end;
+        a{
+            font-size: 2rem;
+            color: v.$azul;
+
+            &:hover{
+                color: darken(v.$azul, 10%);
+            }
+        }
+    }
+    &__imagen{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__logo{
+        width: 19rem;
+        height: 12rem;
+    }
+
+    .loginFormulario{
+
+        input[type="submit"]{
+            @include m.botonGradient(v.$azul, v.$blanco);
+            font-size: 1.4rem;
+        }
+    }
+}
+
+
+.acciones{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 2rem;
+    @include m.tablet{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    &__enlace{
+        @include m.enlace(v.$azul, v.$azulOscuro);
+    }
+}

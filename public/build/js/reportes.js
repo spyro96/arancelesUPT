@@ -1,0 +1,1 @@
+(()=>{const e=document.querySelector(".btn-pdf");document.querySelector("#fecha").addEventListener("change",n=>{const t=n.target.value;e.href=`${window.location.origin}/admin/pdf-reporte?anio=${t}`})})();

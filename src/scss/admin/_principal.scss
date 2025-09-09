@@ -1,0 +1,91 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenido-graficas {
+    h2 {
+        text-align: center
+    }
+
+    .contenedor-bcv {
+        @include m.contenedor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include m.tablet{
+            justify-content: flex-end;
+        }
+        .tasa-bcv {
+            width: 28rem;
+            height: auto;
+            border-radius: 1rem;
+            background: rgb(30, 179, 255);
+            background: linear-gradient(190deg, rgba(30, 179, 255, 1) 0%, rgba(8, 99, 197, 1) 8%, rgba(0, 125, 244, 1) 100%);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            transition: all 0.2s;
+            cursor: pointer;
+
+            &:hover{
+                border: 1px solid v.$blanco;
+                transform: scale(1.05);
+            }
+
+            ul {
+                list-style: none;
+
+                li {
+                    color: v.$blanco;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .grafica {
+        @include m.contenedor;
+        @include m.box-grafica;
+        padding: 2rem;
+
+        select{
+            @include m.input-estilos;
+            width: 30%;
+        }
+    }
+
+
+    .graficos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 5rem;
+        @include m.contenedor;
+
+        .grafica-general{
+            @include m.box-grafica;
+            flex: 1;
+
+            
+        }
+
+        .contenedor {
+            h3 {
+                text-align: center;
+            }
+
+            #input-categoria {
+                select {
+                    @include m.input-estilos;
+                    width: auto;
+                    border-bottom: none;
+                }
+            }
+
+            @include m.box-grafica;
+            padding: 2rem;
+        }
+    }
+}
+
+#tasa-input{
+    @include m.input-estilos;
+}

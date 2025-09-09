@@ -1,0 +1,117 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedorEstudiante-header{
+    background-color: darken(v.$azul, 10%);
+    padding: .2rem 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.headerEstudiante{
+    @include m.contenedor;
+    &__header--grid{
+        display: flex;
+        flex-direction: column;
+        @include m.tablet{
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        h1{
+            @include m.nombreApp(2.5rem);
+            text-align: center;
+        }
+    }
+    &__nav{
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        text-align: center;
+        margin: 1rem 0;
+
+        @include m.tablet{
+            flex-direction: row;
+        }
+
+        &-campo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+
+            & i{
+                color: v.$blanco;
+            }
+        }
+    }
+
+    &__enlace{
+        color: v.$blanco;
+        font-weight: v.$black;
+        border-radius: .2rem;
+        padding: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        transition: .2s all ease-in;
+        cursor: pointer;
+
+        @include m.tablet{
+            font-size: 1.3rem;
+        }
+
+        &:hover{
+            color: v.$azul;
+            background-color: v.$blanco;
+            
+        }
+        &:active{
+            color:v.$azul !important;
+        }
+    }
+}
+
+.dropdown {
+    & button{
+        padding: 1.2rem 1.6rem;
+        background-color: darken(v.$azul, 10%);
+        border: none;
+    }
+    position: relative;
+    display: inline-block;
+
+    &-menu {
+        position: absolute;
+        display: none;
+        text-align: center;
+        background-color: darken(v.$azul, 10%);
+        width: 100%;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        @include m.tablet{
+            width: 20rem;
+        }
+
+        & a {
+            color: v.$blanco;
+            padding: 12px 16px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+
+            @include m.tablet{
+                font-size: 1.3rem;
+            }
+
+            &:hover {
+                background-color: v.$blanco;
+                color: v.$azul;
+            }
+        }
+    }
+    &:hover .dropdown-menu{
+        display: block;
+    }
+}

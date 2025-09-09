@@ -1,0 +1,123 @@
+@use 'base/variables' as v;
+@use 'base/mixins'  as m;
+
+.contenido-password, .contenido-preguntas{
+    @include m.contenedor;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 10px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: v.$blanco;
+    padding: 2rem;
+    margin-bottom: 5rem;
+
+    h3{
+        text-align: center;
+    }
+}
+
+.contenido-password{
+    .campos{
+        @include m.grid(1, 1rem);
+
+        @include m.tablet{
+            @include m.grid(2, 1rem);
+        }
+
+        .campo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            input{
+                @include m.input-estilos;
+            }
+
+            &.nuevo-password{
+                position: relative;
+            }
+
+            i{
+                position: absolute;
+                right: 10px;
+                bottom:10px;
+                font-size: 2rem;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+        .lista-requerimiento {
+            padding-left: 0;
+            margin-top: 2rem;
+            color: lighten(#000, 40%);
+    
+            li {
+                list-style: none;
+                font-size: 1.5rem;
+                line-height: 1.5;
+    
+                &.valido {
+                    color: darken(v.$verde, 10%);
+                }
+            }
+        }
+
+    .submit-password{
+        display: flex;
+       
+        @include m.tablet{
+            justify-content: flex-end;
+        }
+
+        input[type="submit"]{
+            // @include m.boton(v.$azul, v.$blanco);
+            @include m.botonGradient(v.$azul, v.$blanco);
+            font-size: 1.7rem;
+            width: 100%;
+            @include m.tablet{
+                width: auto;
+            }
+        }
+    }
+}
+
+.contenido-preguntas{
+    form{
+        @include m.grid(1, 1rem);
+
+        @include m.tablet{
+            @include m.grid(2, 1rem);
+        }
+
+        .campo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 2rem 0;
+
+            input{
+                @include m.input-estilos;
+                width: 100%;
+            }
+        }
+
+        .submit-preguntas{
+            display: flex;
+           
+            @include m.tablet{
+                grid-column: 2/3;
+                justify-content: flex-end;
+            }
+    
+            input[type="submit"]{
+                @include m.botonGradient(v.$azul, v.$blanco);
+                font-size: 1.7rem;
+                width: 100%;
+                @include m.tablet{
+                    width: auto;
+                }
+            }
+        }
+    }
+}

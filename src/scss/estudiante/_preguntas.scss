@@ -1,0 +1,89 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.preguntas-seguridad {
+    @include m.contenedor-md;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: v.$blanco;
+
+    & h2 {
+        text-align: center;
+        margin-bottom: 5rem;
+        font-size: 3rem;
+        
+    }
+
+    & .formulario {
+        @include m.grid(1, 3rem);
+
+        @include m.tablet {
+            @include m.grid(2, 3rem);
+        }
+
+        & .campo {
+            position: relative;
+            & input {
+                background-color: transparent;
+                border: 0;
+                border-bottom: 2px v.$gris-oscuro solid;
+                display: block;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 1rem 0;
+                font-size: 18px;
+                color: #000000;
+                transition: border-bottom 500ms;
+    
+                &:focus,
+                &:valid {
+                    outline: none;
+                }
+    
+                &:focus {
+                    border-bottom: 2px solid v.$azul;
+                }
+    
+                &:disabled{
+                    background-color: lighten(v.$gris-oscuro, 70%);
+                    border-radius: .7rem;
+                }
+
+                
+            }
+    
+            & label
+            {
+                position: absolute;
+                font-size: 100%;
+                top: -1.5rem;
+                left: -.7rem;
+                padding: .8rem;
+                pointer-events: none;
+                transition: all 0.3s ease;
+                -moz-transition: 0.3s ease all;
+                -webkit-transition: 0.3s ease all;
+                color: v.$negro;
+            }
+        }
+
+        & .submit{
+                grid-column: 1 / 2;
+            @include m.tablet{
+                grid-row: 3 / 4;
+                grid-column: 2 / 3;
+            }
+
+            & input[type="submit"]{
+                @include m.botonGradient(v.$azul, v.$blanco);
+                width: 100%;
+                @include m.tablet{
+                width: auto;
+                }
+            }
+        }
+    }
+}
+

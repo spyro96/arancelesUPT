@@ -1,0 +1,36 @@
+{
+    "name": "spyro/sigea",
+    "description": "proyecto UNI",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Luis Silva",
+            "email": "luisilva96.ls@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models",
+            "Classes\\" :"./classes"
+        }  
+},
+
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "vlucas/phpdotenv": "^5.4",
+        "intervention/image": "^2.7",
+        "fabpot/goutte": "^4.0",
+        "tecnickcom/tc-lib-pdf": "^8.0",
+        "fpdf/fpdf": "^1.86",
+        "dompdf/dompdf": "^2.0"
+    },
+    
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:tecnickcom/tc-lib-pdf.git"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenedor-usuario{
+    
+    @include m.box-shadow;
+    padding: 2rem;
+
+    h2{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    table{
+        
+        thead{
+            background-color: lighten(v.$azul, 10%);
+            color: v.$blanco;
+            th{
+                text-align: center;
+            }
+        }
+
+        tbody{
+            text-align: center;
+            .estatusUsuario{
+                cursor: pointer;
+            }
+
+            .activo{
+                @include m.estatus(#198754);
+                padding: .6rem 2rem;
+                border-radius: 2rem;
+            }
+
+            .inactivo{
+                @include m.estatus(v.$rojo);
+                padding: .6rem 1rem;
+            }
+        }
+
+        .acciones{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            gap: 1rem;
+            @include m.tablet{
+                flex-direction: row;
+            }
+            a, button{
+                font-size: 1.5rem;
+               
+                width: 4rem;
+            }
+        }
+    }
+}
+

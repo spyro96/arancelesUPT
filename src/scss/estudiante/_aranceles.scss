@@ -1,0 +1,242 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenido-aranceles{
+    
+    @include m.contenedor;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: v.$blanco;
+    padding: 2rem 3rem 3rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+    h2, h3{
+        text-align: center;
+    }
+
+    h3{
+        margin-bottom: 4rem;
+    }
+
+    .tasa{
+        p{
+            text-align: end;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+    }
+
+    .contenedor-check{
+        @include m.grid(1, 2rem);
+
+        @include m.tablet{
+            @include m.grid(3, 2rem);
+        }
+        .campo {
+                all: unset;
+                display: flex;
+                flex-direction: column;
+
+                select, input{
+                    @include m.input-estilos;
+                }
+            }
+        
+
+        .campo-cedula{
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 2rem;
+
+            button{
+                @include m.boton(v.$azul, v.$blanco);
+                width: auto;
+                padding: 1.2rem;
+                border-radius: .5rem;
+            }
+        }
+
+        margin-bottom: 2rem;
+    }
+
+    .formulario{
+        &.datos{
+            display: none;
+        }
+        .campo{
+            all: unset;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1rem;
+
+            Select{
+                @extend input;
+                margin-top: .6rem !important;
+                font-size: 1.6rem;
+            }
+        }
+        @include m.grid(1, 1rem);
+
+        @include m.tablet{
+            @include m.grid(2, 1rem);
+        }
+
+        @include m.desktop{
+            @include m.grid(3, 1rem);
+        }
+
+        
+
+        input{
+            background-color: transparent;
+                border: 0;
+                border-bottom: 2px v.$gris-oscuro solid;
+                display: block;
+                width: 100%;
+                margin-top: 1rem;
+                padding: 1rem 0;
+                font-size: 18px;
+                color: #000000;
+                transition: border-bottom 500ms;
+    
+                &:focus,
+                &:valid {
+                    outline: none;
+                }
+    
+                &:focus {
+                    border-bottom: 2px solid v.$azul;
+                }
+    
+                &:disabled{
+                    background-color: lighten(v.$gris-oscuro, 70%);
+                    border-radius: .7rem;
+                }
+        }
+    }
+
+    .categorias-inputs{
+        display: flex;
+        flex-direction: column;
+        @include m.tablet{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        @include m.desktop{
+            justify-content: space-around;
+        }
+    }
+
+    .campo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        gap: 1rem;
+        @include m.tablet{
+            margin-bottom: 0;
+        }
+
+        label{
+            font-size: 2rem;
+        }
+    }
+
+    input[type="radio"]{
+        accent-color: v.$azul;
+        width: 2.2rem;
+        height: 1.6rem;
+    }
+
+    .listados-aranceles{
+        
+        @include m.contenedor;
+        margin-top: 5rem;
+        @include m.grid(1, 2rem);
+
+        @include m.tablet{
+            @include m.grid(2, 2rem);
+        }
+
+        @include m.desktop{
+            @include m.grid(3, 2rem); 
+        }
+        
+        
+        .arancel{
+            width:auto;
+            border: 1px solid v.$azul;
+            border-radius: 2rem;
+
+            &:hover{
+                cursor: pointer;
+            }
+            p{
+                margin-bottom: 0!important;
+                padding: 1rem;
+                @include m.xl_desktop{
+                    font-size: 1.4rem;
+                }
+                text-align: center;
+                font-size: 1.3rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: v.$azul;
+            }
+        }
+
+        .seleccionado{
+            background-color: v.$azul;
+
+            p{
+                color:v.$blanco;
+            }
+        }
+    }
+
+    .cantidad{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 5rem;
+        ul{
+            
+            all: unset;
+            li{
+                list-style: none;
+                width: 100%;
+                text-align: end;
+                margin-bottom: 1.5rem;
+            }
+
+            .precio-total{
+                font-weight: 700;
+                border-top: 2px solid v.$negro;
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    .contenedor-boton{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 3rem;
+
+        .boton{
+            @include m.botonGradient(v.$azul, v.$blanco);
+            
+            @include m.tablet{
+                width: auto;
+            }
+            
+            &:disabled{
+                @include m.boton(lighten(v.$azul, 30%), v.$blanco);
+                width: auto;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,62 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenido-reporte{
+    @include m.box-shadow;
+    padding: 2rem;
+
+    h2{
+        text-align: center;
+    }
+
+    .filtro{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        form{
+
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            select{
+                @include m.input-estilos;
+                width: 10rem;
+                margin-top: 0;
+                padding: .7rem;
+            }
+        }
+        
+        .btn-filtro{
+            @include m.boton(v.$azul, v.$blanco);
+            width: auto;
+            padding: 1rem ;
+            border-radius: .2rem;
+
+        }
+
+        .btn-pdf{
+            @include m.boton(v.$rojo, v.$blanco);
+            width: auto;
+            padding: .7rem 1rem;
+            border-radius: .2rem;
+        }
+    }
+
+    table{
+        thead{
+            background-color: v.$azul;
+            color: v.$blanco;
+            text-transform: uppercase;
+        }
+
+        tbody{
+            text-align: center;
+            .dato-fecha{
+                text-transform: uppercase;
+            }
+        }
+    }
+}

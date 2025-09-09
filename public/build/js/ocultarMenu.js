@@ -1,0 +1,1 @@
+!function(){const e=document.querySelector("#aside"),t=document.querySelector("#menu");t&&e&&t.addEventListener("click",()=>{e.classList.toggle("dashboard__sidebar-active")})}();

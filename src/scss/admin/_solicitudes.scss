@@ -1,0 +1,61 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedor-solicitudes{
+    @include m.contenedor;
+    @include m.box-shadow;
+    padding: 2rem;
+
+    h2{
+        text-align: center;
+    }
+
+    table{
+        margin-bottom: 2rem;
+        thead{
+            background-color: lighten(v.$azul, 10%);
+            color: v.$blanco !important;
+            font-weight: bold;
+        }
+
+        tbody{
+
+            .expirado{
+                //@include m.estatus(#414141);
+                @include m.estatus(v.$rojo);
+            }
+
+            .pendiente{
+                @include m.estatus(#8f8f8f);
+                background-color: darken(#eeeded, 10%)
+            }
+
+            .verificado{
+                @include m.estatus(v.$azul);
+            }
+
+            .listo{
+                @include m.estatus(#198754);
+                padding: .6rem 2rem;
+                border-radius: 2rem;
+            }
+
+            .por{
+                // @include m.estatus( #0dbb8f)
+                @include m.estatus( #e29400)
+                
+            }
+            
+            tr{
+                text-align: center;
+            }
+            .grupo-botones{
+                
+                a{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+    
+}
