@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 18-07-2024 a las 14:40:47
+-- Tiempo de generación: 09-09-2025 a las 14:34:15
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -230,7 +230,6 @@ CREATE TABLE `preguntas_seguridad` (
 --
 
 INSERT INTO `preguntas_seguridad` (`id`, `pregunta1`, `respuesta1`, `pregunta2`, `respuesta2`, `usuarioId`) VALUES
-(1, '¿Cuál es el nombre de tu primer mascota?', 'niño', '¿Cuál es el nombre de tu color favorito?', 'azul', 1),
 (2, '¿Cuál es el nombre de tu primer mascota?', 'niño', '¿Cuál es el nombre de tu color favorito?', 'azul', 2);
 
 -- --------------------------------------------------------
@@ -286,8 +285,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `correo`, `password`, `rol`, `estatus`) VALUES
-(1, 'luisilva96.ls@gmail.com', '$2y$10$mJzIWI0jNHEpuhtrexL8wuHqMaAwTTor3vcdfwxSXkpjOi6Q.Mhty', 'estudiante', 1),
-(2, 'admin@gmail.com', '$2y$10$Z60eY64VBjcy.RF/7CY8.Oj5xMb1MBtRWhfQBzr.jizUbJjJmp1.m', 'admin', 1);
+(2, 'admin@gmail.com', '$2y$10$8RKYZmfUDGd.Y9rEerqJ/.ZHKyo8xU2YfRQzd017ihGUzGHr4RE/O', 'admin', 1);
 
 --
 -- Índices para tablas volcadas
@@ -402,7 +400,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `datos_personales`
 --
 ALTER TABLE `datos_personales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_verificar`
@@ -414,7 +412,7 @@ ALTER TABLE `datos_verificar`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pnf`
@@ -432,13 +430,13 @@ ALTER TABLE `preguntas_seguridad`
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes_detalles`
 --
 ALTER TABLE `solicitudes_detalles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

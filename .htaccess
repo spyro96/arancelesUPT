@@ -1,5 +1,5 @@
-php_value display_errors 0
-DirectoryIndex index.php
+#php_value display_errors 0
+#DirectoryIndex index.php
 
 RewriteEngine On
 #la regla RewriteRule ^cron\.php - [L] permite el acceso directo a la página PHP cron.php sin aplicar la reescritura de URL.

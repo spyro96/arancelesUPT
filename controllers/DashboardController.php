@@ -458,6 +458,8 @@ class DashboardController{
         $reportes = ReportesBolivares::balance($anio);
 
         $total = Solicitudes_detalles::sumaPorAnio($anio);
+
+        if($total->total === NULL){ $total->total = 0;}
         
         //$imagen = $_SERVER['PHP_DOCUMENT_ROOT']."/public/img/banner-upt.png"; //hosting 000webhost
         $imagen = $_SERVER['DOCUMENT_ROOT']."\img\banner-upt.png";

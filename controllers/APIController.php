@@ -57,28 +57,19 @@ class APIController
 
         $datos = new DatosPersonales($_POST);
 
-        $datos->id = $usuario->id ?? null;
-        $datos->usuarioId = $_SESSION['id'];
+            $datos->id = $usuario->id ?? null;
+            $datos->usuarioId = $_SESSION['id'];
 
         $resultado = $datos->guardar();
 
-        if ($resultado) {
-            $_SESSION['nombres'] = $datos->nombres;
-            $_SESSION['apellidos'] = $datos->apellidos;
-            $_SESSION['cedula'] = $datos->cedula;
-            $_SESSION['nacionalidad'] = $datos->nacionalidad;
-            $_SESSION['telefono'] = $datos->telefono;
             echo json_encode(['resultado' => $resultado, 'primeraVez' => $primeraVez]);
         }
 
-    }
-
-    public static function preguntas_seguridad()
-    {
-        session_start();
-        if (!$_SESSION) {
-            header('Location: /');
-        }
+        public static function preguntas_seguridad(){
+            session_start();
+            if(!$_SESSION){
+                header('Location: /');
+            }
 
         //consulta la base de datos
         $preguntas = PreguntaSeguridad::where('usuarioId', $_SESSION['id']);
