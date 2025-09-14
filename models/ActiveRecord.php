@@ -117,7 +117,7 @@ class ActiveRecord {
 
     // Obtener todos los Registros
     public static function all($orden = 'DESC') {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id ${orden}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id $orden";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -131,7 +131,7 @@ class ActiveRecord {
     // Obtener todos los Registros
     public static function ultimo_arancel($orden = 'DESC')
     {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id ${orden}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id $orden";
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
@@ -143,7 +143,7 @@ class ActiveRecord {
     }
 
     public static function obtener_solicitudes_porPagar($id){
-        $query = "SELECT * FROM solicitudes_estudiantes LEFT OUTER JOIN solicitudes ON solicitudes_estudiantes.solicitudesId = solicitudes.id LEFT OUTER JOIN datos_personales ON solicitudes_estudiantes.datos_personalesId = datos_personales.id WHERE usuarioId = ${id} AND estatus = 'por pagar';";
+        $query = "SELECT * FROM solicitudes_estudiantes LEFT OUTER JOIN solicitudes ON solicitudes_estudiantes.solicitudesId = solicitudes.id LEFT OUTER JOIN datos_personales ON solicitudes_estudiantes.datos_personalesId = datos_personales.id WHERE usuarioId = $id AND estatus = 'por pagar';";
 
         $resultado = self::consultarSQL($query);
         return $resultado;
@@ -151,49 +151,49 @@ class ActiveRecord {
 
     // Busca un registro por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = $id";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
 
     // Busca un registro por su correo
     public static function findEmail($correo) {
-        $query = "SELECT * FROM " . static::$tabla  . " WHERE correo = '${correo}'";
+        $query = "SELECT * FROM " . static::$tabla  . " WHERE correo = '$correo'";
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite} ORDER BY id DESC" ;
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT $limite ORDER BY id DESC" ;
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
 
     //retornar los registros por un orden
     public static function ordenar($columna, $orden){
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden}" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY $columna $orden" ;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Busqueda Where con una Columna 
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE $columna = '$valor'";
         $resultado = self::consultarSQL($query);
         return  array_shift($resultado) ;
     }
 
     // Busqueda de arancel por categoria
     public static function arancel_categoria($categoria) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE categoria = '${categoria}'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE categoria = '$categoria'";
         $resultado = self::consultarSQL($query);
         return  $resultado;
     }
 
     //consulta cuantos hay por pagar de acuerdo el id
     public static function total_Porpagar($id) {
-        $query = "SELECT COUNT(*) FROM ". static::$tabla ." LEFT OUTER JOIN datos_personales ON solicitudes.datos_personalesId = datos_personales.id LEFT OUTER JOIN solicitudes_detalles ON solicitudes.solicitudes_detalles_id2 = solicitudes_detalles.id WHERE datos_personales.usuarioId = ${id} AND solicitudes_detalles.estatus = 'por pagar'";
+        $query = "SELECT COUNT(*) FROM ". static::$tabla ." LEFT OUTER JOIN datos_personales ON solicitudes.datos_personalesId = datos_personales.id LEFT OUTER JOIN solicitudes_detalles ON solicitudes.solicitudes_detalles_id2 = solicitudes_detalles.id WHERE datos_personales.usuarioId = $id AND solicitudes_detalles.estatus = 'por pagar'";
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
         return  array_shift($total);
@@ -204,9 +204,9 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ";
         foreach($array as $key => $value){
             if($key == array_key_last($array)){//array_key_last devuele la llave del ultimo arreglo
-                $query .= "${key} = '${value}'";
+                $query .= "$key = '$value'";
             }else{
-                $query .= "${key} = '${value}' AND ";
+                $query .= "$key = '$value' AND ";
             }
         }
         $resultado = self::consultarSQL($query);
@@ -315,7 +315,7 @@ class ActiveRecord {
 
     //paginar registros
     public static function paginar($por_pagina, $offset){
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT ${por_pagina} OFFSET ${offset}";
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT $por_pagina OFFSET $offset";
         $resultado = self::consultarSQL($query);
         return  $resultado ;
     }
@@ -324,7 +324,7 @@ class ActiveRecord {
     public static function total($columna = '', $valor = ''){
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
         if($columna){
-            $query .= " WHERE ${columna} = ${valor}";
+            $query .= " WHERE $columna = $valor";
         }
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
